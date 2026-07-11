@@ -1,31 +1,164 @@
 {
-    "products": [
+  "products": [
+    {
+      "id": 1,
+      "name": "Premium Hoodie",
+      "price": 100,
+      "image": "hoodie.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Sticky Notes",
+      "price": 5,
+      "image": "notes.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Water Bottle",
+      "price": 30,
+      "image": "bottle.jpg"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "testuser",
+      "balance": 500,
+      "cart": []
+    }
+  ],
+  "cart": [
+    {
+      "items": [
         {
-            "id": 1,
-            "name": "Premium Hoodie",
-            "price": 100,
-            "image": "hoodie.jpg"
-        },
-        {
-            "id": 2,
-            "name": "Sticky Notes",
-            "price": 5,
-            "image": "notes.jpg"
-        },
-        {
-            "id": 3,
-            "name": "Water Bottle",
-            "price": 30,
-            "image": "bottle.jpg"
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
         }
-    ],
-    "users": [
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 1
+    },
+    {
+      "items": [
         {
-            "id": 1,
-            "username": "testuser",
-            "balance": 500,
-            "cart": []
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
         }
-    ],
-    "cart": []
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 2
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
+        }
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 3
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
+        }
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 4
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
+        }
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 5
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
+        }
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 6
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
+        }
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
+        }
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 8
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
+        }
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 9
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
+        }
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 10
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
+        }
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 11
+    }
+  ]
 }
