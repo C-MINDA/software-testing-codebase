@@ -102,6 +102,19 @@ describe("Remove Item Logic Unit Tests", () => {
   // 1. Test removing an existing item reduces array length
   // 2. Test removing a non-existing item does nothing
   // ANSWER BEGIN
+
+  // ARRANGE: Set up inputs and initial state
+  const cart = [
+    { id: 1, price: 10 },
+    { id: 2, price: 20 },
+  ];
+
+  // ACT: Execute the function under test
+  const result = removeItem(cart, 1);
+
+  // ASSERT: Verify the output matches expectations
+  expect(result.length).toBe(1);
+  expect(result[0].id).toBe(2);
   // END OF ANSWER
 });
 
