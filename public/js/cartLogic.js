@@ -26,11 +26,11 @@ function calculateTotal(cartItems, discountCode) {
 // Exercise 1; Question 4
 let result;
 result = calculateTotal([{ price: 10 }, { price: 2.5 }], "");
-console.log(result); // Should print out "12.5"
+// console.log(result); // Should print out "12.5"
 result = calculateTotal([{ price: 3 }, { price: 2 }], "KUDOS10");
-console.log(result); // Should print out "4.5"
+// console.log(result); // Should print out "4.5"
 result = calculateTotal([{ price: 999999.99 }, { price: 1000000.01 }], "");
-console.log(result);
+// console.log(result);
 
 /**
  * Removes the first instance of an item with the given id from the cart.
