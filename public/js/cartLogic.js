@@ -46,6 +46,11 @@ function removeItem(cartItems, itemId) {
   // 3. Return the modified array/new array
 
   // ANSWER BEGIN
+  const index = cartItems.findIndex((item) => item.id === itemId);
+
+  if (index !== -1) {
+    cartItems.splice(index, 1);
+  }
   return cartItems;
   // END OF ANSWER
 }
@@ -62,7 +67,7 @@ function isValidDiscount(code) {
   // 2. Return false otherwise
 
   // ANSWER BEGIN
-  return false;
+  return code === "KUDOS10";
   // END OF ANSWER
 }
 
