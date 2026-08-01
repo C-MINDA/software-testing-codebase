@@ -22,29 +22,47 @@ const assert = require("assert");
       5000,
     );
 
-    // 3. Add ONE of each item to the cart
+    // 3. Add the first TWO items to the cart
     const addButtons = await driver.findElements(
       By.css(".product-card button"),
     );
-    for (const btn of addButtons) {
+    for (const btn of addButtons.slice(0, 2)) {
       await btn.click();
       console.log('Clicked "Add to Cart"');
       await sleep(DELAY); // Wait to see the action
     }
 
-    // 4. Verify Total before discount (100 + 5 + 30 = 135)
+    // 4. Verify Total before removing an item (100 + 5 = 105)
     // STUDENT: Implement the assertion logic below (Modified for multiple items)
 
     const totalElement = await driver.findElement(By.id("total-price"));
 
     await driver.wait(async () => {
       const text = await totalElement.getText();
-      return text === "135";
+      return text === "105";
     }, 5000);
-    console.log("✅ Base Total Verified: 135");
+    assert.strictEqual(await totalElement.getText(), "105");
+    console.log("Base Total Verified: 105");
     await sleep(DELAY);
 
-    // 5. Test Invalid Discount Code
+    // 5. Remove the first item and verify the updated total
+    const firstRemoveButton = await driver.wait(
+      until.elementLocated(By.css("#cart-items li button")),
+      5000,
+    );
+    await firstRemoveButton.click();
+    console.log("Clicked X");
+
+    await driver.wait(async () => {
+      const text = await totalElement.getText();
+      return text === "5";
+    }, 5000);
+    const totalAfterRemoval = await totalElement.getText();
+    assert.strictEqual(totalAfterRemoval, "5");
+    console.log("Final Total Verified: 5");
+    await sleep(DELAY);
+
+    // 6. Test Invalid Discount Code
     const discountInput = await driver.findElement(By.id("discount-code"));
     const applyBtn = await driver.findElement(
       By.css(".discount-section button"),
@@ -60,31 +78,28 @@ const assert = require("assert");
       until.elementTextContains(msg, "Invalid Discount Code"),
       2000,
     );
-    console.log("✅ Invalid Discount Feedback Verified");
+    console.log("Invalid Discount Feedback Verified");
     await sleep(DELAY);
 
-    // 6. Test Valid Discount Code
+    // 7. Test Valid Discount Code
     await discountInput.clear();
     await discountInput.sendKeys("KUDOS10");
     await sleep(1000);
     await applyBtn.click();
     console.log("Applied Valid Discount");
 
-    // 7. Verify New Total (135 * 0.9 = 121.5)
+    // 8. Verify Discounted Total (5 * 0.9 = 4.5)
     await driver.wait(async () => {
       const text = await totalElement.getText();
-      return text === "121.5";
+      return text === "4.5";
     }, 5000);
-    console.log("✅ Final Total Verified: 121.5");
+    assert.strictEqual(await totalElement.getText(), "4.5");
+    console.log("Discounted Total Verified: 4.5");
 
-    // ANSWER BEGIN
-
-    // END OF ANSWER
-
-    await sleep(2000); // Final pause to admire the work
+    await sleep(2000);
   } catch (e) {
     if (e.message.includes("SessionNotCreatedError")) {
-      console.error("\n⚠️  ChromeDriver Version Mismatch ⚠️");
+      console.error("\n ChromeDriver Version Mismatch");
       console.error(
         "Please update your ChromeDriver to match your Chrome browser version.",
       );
@@ -92,7 +107,7 @@ const assert = require("assert");
         "Try running: npm install chromedriver@latest --save-dev\n",
       );
     } else {
-      console.error("❌ UI Test Failed", e);
+      console.error("UI Test Failed", e);
     }
     process.exit(1); // Exit with error
   } finally {
