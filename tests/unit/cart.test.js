@@ -2,6 +2,7 @@ const {
   calculateTotal,
   removeItem,
   isValidDiscount,
+  calculateShipping,
 } = require("../../public/js/cartLogic");
 
 // UNIT TEST: Testing logic in isolation without a database
@@ -127,4 +128,39 @@ describe("Discount Validation Unit Tests", () => {
   // 2. Test other strings return false
   // ANSWER BEGIN
   // END OF ANSWER
+});
+
+describe("Shipping Logic Unit Tests", () => {
+  test("calculateShipping returns 0 for an empty cart", () => {
+    // ARRANGE
+    const cartTotal = 0;
+
+    // ACT
+    const shippingFee = calculateShipping(cartTotal);
+
+    // ASSERT
+    expect(shippingFee).toBe(0);
+  });
+
+  test("calculateShipping returns 10 for an order below 200", () => {
+    // ARRANGE
+    const cartTotal = 199;
+
+    // ACT
+    const shippingFee = calculateShipping(cartTotal);
+
+    // ASSERT
+    expect(shippingFee).toBe(10);
+  });
+
+  test("calculateShipping returns 0 for an order of 200 or more", () => {
+    // ARRANGE
+    const cartTotal = 200;
+
+    // ACT
+    const shippingFee = calculateShipping(cartTotal);
+
+    // ASSERT
+    expect(shippingFee).toBe(0);
+  });
 });

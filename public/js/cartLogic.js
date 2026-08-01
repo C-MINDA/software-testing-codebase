@@ -71,11 +71,34 @@ function isValidDiscount(code) {
   // END OF ANSWER
 }
 
+/**
+ * Calculates the shipping fee based on the cart total.
+ * @param {number} cartTotal
+ * @returns {number} Shipping fee
+ */
+function calculateShipping(cartTotal) {
+  if (cartTotal === 0) {
+    return 0;
+  }
+
+  if (cartTotal >= 200) {
+    return 0;
+  }
+
+  return 10;
+}
+
 // UMD Wrapper for both Node.js and Browser compatibility
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { calculateTotal, removeItem, isValidDiscount };
+  module.exports = {
+    calculateTotal,
+    removeItem,
+    isValidDiscount,
+    calculateShipping,
+  };
 } else {
   window.calculateTotal = calculateTotal;
   window.removeItem = removeItem;
   window.isValidDiscount = isValidDiscount;
+  window.calculateShipping = calculateShipping;
 }
