@@ -30,4 +30,16 @@ describe("API Layer Tests", () => {
     expect(response.body.user).toBe("testuser");
   });
   // END OF ANSWER
+
+  test("GET /products/1 returns the Premium Hoodie", async () => {
+    // ARRANGE
+    const productId = 1;
+
+    // ACT
+    const response = await request(API_URL).get(`/products/${productId}`);
+
+    // ASSERT
+    expect(response.status).toBe(200);
+    expect(response.body.name).toBe("Premium Hoodie");
+  });
 });

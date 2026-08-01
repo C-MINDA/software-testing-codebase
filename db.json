@@ -171,6 +171,18 @@
       "total": 50,
       "user": "testuser",
       "id": 12
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Product 1",
+          "price": 50
+        }
+      ],
+      "total": 50,
+      "user": "testuser",
+      "id": 13
     }
   ]
 }
